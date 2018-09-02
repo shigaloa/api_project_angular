@@ -1,0 +1,39 @@
+<navigation content="vm.listaApis.listaApis"></navigation>
+
+<container-fluid class="bg-grey"><br/><br/><br/>
+    <h2 class="text-center">CONTACTO</h2><br/><br/>
+    <div role="alert" ng-show="vm.formError" class="alert alert-danger">{{vm.formError}}</div>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-3"><br/>
+        <strong><p><span class="glyphicon glyphicon-map-marker"> Sevilla, España</span></p>
+        <p><span class="glyphicon glyphicon-phone"> + 034 609972644</span></p>
+        <p><span class="glyphicon glyphicon-envelope"> shigaloa@gmail.com</span></p></strong>
+        </br>
+        <button class="btn btn-lg"><a href="/#">Volver</a></button>
+      </div>
+      
+      <div class="col-sm-7">
+        <form class="form-horizontal" ng-submit="vm.onSubmit()" method="post" role="form">
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <input class="form-control" ng-model="vm.formData.nombre" id="nombre" name="nombre" placeholder="Nombre" type="text" required=""/>
+            </div>
+            <div class="col-sm-6 form-group">
+              <input class="form-control" ng-model="vm.formData.email" id="email" name="email" placeholder="Email" type="text" required=""/>
+            </div>
+          </div>
+          <div class="row"> 
+            <textarea class="form-control" ng-model="vm.formData.comentario" id="comentar" name="comentario" placeholder="Comentario" rows="5"></textarea>
+          </div><br/>
+          <div class="row">
+            <div class="col-sm-12 form-group">
+              <button class="btn btn-default pull-right" type="submit">Enviar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-sm-1"></div> 
+    </div>
+    <footer-generico></footer-generico>
+  </container-fluid>

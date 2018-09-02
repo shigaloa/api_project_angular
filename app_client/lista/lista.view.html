@@ -1,0 +1,41 @@
+<navigation content="vm.data.listaApis"></navigation>
+
+<div class="container-fluid" id="lista">
+    <div class="text-center">
+        <h2>{{vm.cabecera.titulo}}</h2>
+        <h4>{{vm.cabecera.subtitulo}}</h4>
+    </div>
+    <div class="row"  ng-controller="apiListCtrl">
+        <div class="error text-center">
+            {{vm.mensaje}}
+        </div>
+        <div class="col-sm-4" ng-repeat="api in vm.data.listaApis">
+            <div class="panel panel-default text-center">
+                <div class="panel-heading">
+                    <h2>{{api.nombre}}</h2>
+                </div>
+                <div class="panel-body">
+                    <img class="center-block" src="{{api.imagen}}" alt="" width="300" height="260"/>
+                </div>
+                <div class="panel-footer">
+                    <h3>Opiniones</h3>
+                    <span ng-repeat="recomendacion in api.recomendaciones">
+                        <strong>
+                            {{recomendacion.autor}}&nbsp;&nbsp;
+                            <small>{{ recomendacion.creado | date : 'd MMMM yyyy' }}</small>
+                        </strong>
+                        <p>{{recomendacion.comentario}}&nbsp;&nbsp;</p>
+                        <p class="estrellas" estrellas puntuacion="recomendacion.puntuacion"></p>
+                    </span>
+                    <hr width="100%"/>
+                    <p>Media:&nbsp;
+                        <span class="estrellas" estrellas puntuacion="api.puntuacion"></span>
+                    </p>
+                    <a class="btn btn-lg" ng-href="/#rest_api/nombre/{{api.api}}/id/{{api._id}}">Entrar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer-generico></footer-generico>
+</div>
+

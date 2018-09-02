@@ -1,0 +1,97 @@
+<navigation content="vm.listaApis.listaApis"></navigation>
+
+<div class="container-fluid" id="detalle">
+    </br>
+    </br>
+    <div class="text-center">
+        <h2>{{vm.cabecera.titulo}}</h2>
+        <h4>{{vm.cabecera.subtitulo}}</h4>
+    </div>
+    <div class="row" ng-controller="apiCtrl">
+        <div class="col-sm-6">
+            <div class="panel panel-default text-center">
+                <div class="panel-heading">
+                    <h1>{{vm.imagen.cabecera}}</h1>
+                </div>
+                <div class="panel-body">
+                    <p><strong>{{vm.imagen.descripcion.linea1}}</strong></p>
+                    <p><strong>{{vm.imagen.descripcion.linea2}}</strong></p>
+                    <div role="alert" ng-show="vm.formError" class="alert alert-danger">{{vm.formError}}</div>
+                    <form class="form-horizontal" ng-submit="vm.onSubmit()" method="post" role="form">
+                        <div class="form-group" style="display:block">
+                            <label class="col-xs-10 col-sm-6 control-label" for="seleccion">Seleccionar</label>
+                            <div class="col-xs-12 col-sm-3">
+                                <select ng-init="vm.formData.opcion=''" ng-model="vm.formData.opcion" class="form-control input-sm" id="seleccionar" onchange="manejarSelectores()" name="seleccion">
+                                    <option></option>
+                                    <option ng-repeat="opcion in vm.opciones" value="{{opcion.valor}}">{{opcion.etiqueta}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" id="tipo" style="display:none">
+                            <label class="col-xs-10 col-sm-6 control-label" for="tipo">Tipo de contenido</label>
+                            <div class="col-xs-12 col-sm-3">
+                                <select ng-init="vm.formData.tipo = 'event'" ng-model="vm.formData.tipo" class="form-control input-sm" name="tipo">
+                                    <option ng-repeat="tipo in vm.tipos" value={{tipo}}>{{tipo}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" id="fuente" style="display:none">
+                            <label class="col-xs-10 col-sm-6 control-label" for="fuente">Fuente de los datos</label>
+                            <div class="col-xs-12 col-sm-3">
+                                <select ng-init="vm.formData.fuente = 'spain_info'" ng-model="vm.formData.fuente" class="form-control input-sm" name="fuente">
+                                    <option ng-repeat="fuente in vm.fuentes" value="fuente">{{fuente}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" id="centrar" style="display:none">
+                            <label class="col-xs-10 col-sm-6 control-label" for="centrar">Distancia Km</label>
+                            <div class="col-xs-12 col-sm-3">
+                                <input ng-init="vm.formData.distancia = '5'" ng-model="vm.formData.distancia" type="range" min="5" max="10" step="1" value="5" name="centrar" oninput="document.getElementById('distancia').innerHTML = this.value"
+                                />
+                                <label id="distancia">5</label>
+                                <input ng-init="vm.formData.latitud = '37.3828300'" ng-model="vm.formData.latitud" class="form-control" id="latitud" name="latitud" style="display:none" />
+                                <input ng-init="vm.formData.longitud = '-5.9731700'" ng-model="vm.formData.longitud" class="form-control" id="longitud" name="longitud" style="display:none" />
+                            </div>
+                        </div>
+                        <button class="btn btn-lg pull-right">Enviar consulta</button>
+                    </form>
+                </div>
+                <hr width="100%"/>
+                <h3>Opiniones</h3>
+                <span ng-repeat="recomendacion in vm.recomendaciones">
+                    <strong>
+                        {{recomendacion.autor}}&nbsp;&nbsp;
+                        <small>{{ recomendacion.creado | date : 'd MMMM yyyy' }}</small>
+                    </strong>
+                    <p>{{recomendacion.comentario}}&nbsp;&nbsp;</p>
+                    <p class="estrellas" estrellas puntuacion="recomendacion.puntuacion"></p>
+                </span>
+                <div class="panel-footer">
+                    <h3>{{vm.imagen.pie}}</h3>
+                    <p>Media:&nbsp;<span class="estrellas" estrellas puntuacion="vm.imagen.puntuacion"></span></p>
+                    <!--<a class="btn btn-lg" href="/#rest_api/{{rest_api}}/recomendacion/nueva">Valorar</a>-->
+                    <a ng-click="vm.popupRecomendacionForm()" class="btn btn-lg">Valorar</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default text-center">
+                <div class="panel-heading">
+                    <h1>{{vm.formulario.cabecera}}</h1>
+                </div>
+                <div class="panel-body">
+                    <div>
+                        <img class="center-block" src={{vm.formulario.descripcion.linea1}} alt="" width="400" height="300"/>
+                    </div>
+                    <br/>
+                    <p><strong>{{vm.formulario.descripcion.linea2}}</strong></p>
+                </div>
+                <div class="panel-footer">
+                    <h3>{{vm.formulario.pie}}</h3>
+                    <a class="btn btn-lg" href="/#">Volver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer-generico></footer-generico>
+</div>

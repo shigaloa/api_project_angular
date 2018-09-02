@@ -1,0 +1,36 @@
+
+extends layout
+
+block content
+      #lista.container-fluid
+      .text-center
+        h2= cabecera.titulo
+        h4= cabecera.subtitulo
+      .row(ng-controller="apiListCtrl")
+        .error.text-center {{mensaje}}
+        .col-sm-4(ng-repeat="api in data.listaApis")
+            .panel.panel-default.text-center
+              .panel-heading
+                h2 {{api.nombre}}
+              .panel-body
+                img.center-block(src='{{api.imagen}}', alt='', width='300', height='260')
+              .panel-footer
+                h3 Opiniones
+                span(ng-repeat="recomendacion in api.recomendaciones")
+                  strong {{recomendacion.autor}}
+                    |&nbsp;
+                    |&nbsp;
+                    small {{ recomendacion.creado | date : 'd MMMM yyyy' }}
+                  p {{recomendacion.comentario}}
+                    |&nbsp;
+                    |&nbsp;
+                  p(estrellas, puntuacion="recomendacion.puntuacion")
+                    
+                hr(width="100%")
+                p Media:
+                  |&nbsp;
+                  span(estrellas, puntuacion="api.puntuacion")
+
+                a.btn.btn-lg(href="/rest_api/{{api._id}}") Entrar
+                
+        

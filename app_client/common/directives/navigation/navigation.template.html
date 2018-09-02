@@ -1,0 +1,26 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container" gotop>
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#myNavbar"><span class="icon-bar"></span><span
+                    class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="/#">DESARROLLO ANGULARJS NODEJS</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right" dropdown is-open="status.isopen">
+                <li><a href="/#">INICIO</a></li>
+                <li><a href="/#about">SOBRE LA WEB</a></li>
+                
+                
+                <li class="dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+                    <a href="#">APIS<span class="caret"></span></a>
+                </li>
+                <ul class="dropdown-menu" role="menu">
+                    <li ng-repeat="api in listaApis"><a href="/#rest_api/nombre/{{api.api}}/id/{{api._id}}">{{api.nombre}}</a></li>
+                </ul>
+                
+                <li><a href="/#cv">CURRICULUM</a></li>
+                <li><a href="/#contacto">CONTACTO</a></li>
+            </ul>
+        </div>
+    </div>
+    
+</nav>

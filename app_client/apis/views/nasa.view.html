@@ -1,0 +1,96 @@
+<navigation content="vm.listaApis.listaApis"></navigation>
+
+<div class="container-fluid" id="detalle">
+    </br>
+    </br>
+    <div class="text-center">
+        <h2>{{vm.cabecera.titulo}}</h2>
+        <h4>{{vm.cabecera.subtitulo}}</h4>
+    </div>
+    <div class="row" ng-controller="apiCtrl">
+        <div class="col-sm-6">
+            <div class="panel panel-default text-center">
+                <div class="panel-heading">
+                        <h1>{{vm.imagen.cabecera}}</h1>
+                </div>
+                <div class="panel-body">
+                    <p><strong>{{vm.imagen.descripcion.linea1}}</strong></p>
+                    <p><strong>{{vm.imagen.descripcion.linea2}}</strong></p>
+                    <div role="alert" ng-show="vm.formError" class="alert alert-danger">{{vm.formError}}</div>
+                    <form class="form-horizontal" ng-submit="vm.onSubmit()"method="post" role="form">
+                        <div class="form-group" style="display:block">
+                            <label class="col-xs-10 col-sm-6 control-label" for="rover">Seleccionar rover</label>
+                            <div class="col-xs-12 col-sm-3">
+                                <select ng-init="vm.formData.rover = ''" ng-model="vm.formData.rover" class="form-control input-sm" id="rover" onchange="manejarSelectoresNasa()" name="rover">
+                                    <option selected="selected"></option>
+                                    <option ng-repeat="rover in vm.rovers">{{rover.nombre}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" id="camara_set1" style="display:none">
+                            <label class="col-xs-10 col-sm-6 control-label" for="camara_set1">Seleccionar cámara</label>
+                            <div class="col-xs-12 col-sm-5">
+                                <select ng-init="vm.formData.camara_set1 = ''" ng-model="vm.formData.camara_set1" class="form-control input-sm" name="camara_set1">
+                                    <option selected="selected"></option>
+                                    <option ng-repeat="camara in vm.camara_set1" value="{{camara.abreviatura}}">{{camara.nombre}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" id="camara_set2" style="display:none">
+                            <label class="col-xs-10 col-sm-6 control-label" for="camara_set2">Seleccionar cámara</label>
+                            <div class="col-xs-12 col-sm-6">
+                                <select ng-init="vm.formData.camara_set2 = ''" ng-model="vm.formData.camara_set2" class="form-control input-sm" name="camara_set2">
+                                    <option selected="selected"></option>
+                                    <option ng-repeat="camara in vm.camara_set2" value="{{camara.abreviatura}}">{{camara.nombre}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" id="sol" style="display:none">
+                            <label class="col-xs-10 col-sm-6 control-label" for="sol">Día marciano desde aterrizaje</label>
+                            <div class="col-xs-12 col-sm-3">
+                                <input ng-init="vm.formData.sol = '0'" ng-model="vm.formData.sol" type="range" min="0" max="1000" value="0" step="1" name="sol" oninput="document.getElementById('dia_marciano').innerHTML = this.value"
+                                />
+                                <label id="dia_marciano">0</label>
+                            </div>
+                        </div>
+                        <button class="btn btn-lg pull-right">Enviar Nasa</button>
+                    </form>
+                </div>
+                <hr width="100%"/>
+                <h3>Opiniones</h3>
+                <span ng-repeat="recomendacion in vm.recomendaciones">
+                    <strong>
+                        {{recomendacion.autor}}&nbsp;&nbsp;
+                        <small>{{ recomendacion.creado | date : 'd MMMM yyyy' }}</small>
+                    </strong>
+                    <p>{{recomendacion.comentario}}&nbsp;&nbsp;</p>
+                    <p class="estrellas" estrellas puntuacion="recomendacion.puntuacion"></p>
+                </span>
+                <div class="panel-footer">
+                    <h3>{{vm.imagen.pie}}</h3>
+                    <p>Media:&nbsp;<span class="estrellas" estrellas puntuacion="vm.imagen.puntuacion"></span></p>   
+                    <a ng-click="vm.popupRecomendacionForm()" class="btn btn-lg">Valorar</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default text-center">
+                <div class="panel-heading">
+                    <h1>{{vm.formulario.cabecera}}</h1>
+                </div>
+                <div class="panel-body">
+                    <div>
+                        <img class="center-block" src={{vm.formulario.descripcion.linea1}} alt="" width="400" height="300"/>
+                    </div>
+                    <br/>
+                    <p><strong>{{vm.formulario.descripcion.linea2}}</strong></p>
+                </div>
+                <div class="panel-footer">
+                    <h3>{{vm.formulario.pie}}</h3>
+                    <a class="btn btn-lg" href="/#">Volver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer-generico></footer-generico>
+</div>

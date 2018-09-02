@@ -1,0 +1,48 @@
+<navigation content="vm.listaApis.listaApis"></navigation>
+
+<div class="container-fluid" id="detalle">
+</div>
+<div class="text-center">
+    <h2>{{vm.cabecera.subtitulo}}</h2>
+    <h4>{{vm.cabecera.subtitulo}}</h4>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default text-center">
+            <div class="panel-heading">
+                <h1>{{vm.cabecera.titulo}}</h1>
+            </div>
+            <div class="panel-body">
+                <p></p>
+                <div role="alert" ng-show="vm.formError" class="alert alert-danger">{{vm.formError}}</div>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Descripción</th>
+                            <th class="text-center">URL</th>
+                            <th class="text-center">Autor</th>
+                            <th class="text-center">Fuente</th>
+                            <th class="text-center">Ir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                        <tr ng-repeat="resultado in vm.resultado.data.results">
+                            <td>{{resultado.description | limitaCadena}}</td>
+                            <td>{{resultado.url | limitaCadena}}</td>
+                            <td>{{resultado.author}}</td>
+                            <td>{{resultado.source}}</td>
+                            <td><a class="glyphicon glyphicon-new-window" href="{{resultado.url}}" target="_blank"></a></td>
+                        </tr>
+                    
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel-footer">
+                <h3></h3>
+                <a class="button btn btn-lg" ng-href="/#rest_api/nombre/{{vm.api}}/id/{{vm._id}}">Volver</a>
+            </div>
+        </div>
+    </div>
+    <footer-generico></footer-generico>
+</div>
