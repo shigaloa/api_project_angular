@@ -7,6 +7,7 @@ var gracefulShutdown;
 if (process.env.NODE_ENV === 'production'){
     //Poner la dbURI correspondiente cuando se pase a producción
     //dbURI = 'mongodb://shigaloa:fra00mar@ds213229.mlab.com:13229/loc8r-dev';
+    dbURI = 'mongodb://shigaloa:fra00mar@ds141872.mlab.com:41872/apidb';
 };
 
 /*para ocultar user/pass hemos puesto variable de entorno en heroku MONGOLAB_URI*/

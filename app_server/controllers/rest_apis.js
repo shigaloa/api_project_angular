@@ -9,7 +9,8 @@ var apiOptions = {
 };
 
 if (process.env.NODE_ENV === 'production') {
-  apiOptions.server = "https://floating-harbor-99740.herokuapp.com";
+  //apiOptions.server = "https://floating-harbor-99740.herokuapp.com";
+  apiOptions.server = "https://safe-reef-57362.herokuapp.com";
 }
 
 /* GET página listado de APIS */
