@@ -14,7 +14,8 @@
         if (detalle.resultado.data.status == 'NOK') {
             vm.formError = "Aragon Open Data no tiene datos para las opciones propuestas, intenta de nuevo";
             /* cambiar lo siguiente para volver a la api */
-            return false;
+            vm._id = detalle._id;
+            vm.api = detalle.api
         } else {
             vm.formError = "";
             vm.resultado = detalle.resultado;
