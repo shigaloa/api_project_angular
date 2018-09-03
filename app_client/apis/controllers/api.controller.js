@@ -43,6 +43,7 @@
                             .then(function (dataComunidades) {
                                 ine.sexos()
                                     .then(function (dataSexos) {
+                                        console.log ('datasexos: ', dataSexos);
                                         vm.formError = "";
                                         vm.sexos = dataSexos.data;
                                     })
