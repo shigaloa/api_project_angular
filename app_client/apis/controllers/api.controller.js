@@ -39,7 +39,7 @@
                         // Para la lista de navigation
                         vm.listaApis = apiFactory.getLista();
 
-                        ine.comunidades()
+                        /*ine.comunidades()
                             .then(function (dataComunidades) {
                                 ine.sexos()
                                     .then(function (dataSexos) {
@@ -54,6 +54,25 @@
                             })
                             , function error(e) {
                                 vm.mensaje = "Lo siento, algo fue mal cargando variable Comunidades en INE";
+                            };*/
+
+                        ine.comunidades()
+                            .then(function (dataComunidades) {
+                                
+                                vm.comunidades = dataComunidades.data;
+                            })
+                            , function error(e) {
+                                vm.mensaje = "Lo siento, algo fue mal cargando variable Comunidades en INE";
+                            };
+
+                        ine.sexos()
+                            .then(function (dataSexos) {
+                                console.log ('datasexos: ', dataSexos);
+                                vm.formError = "";
+                                vm.sexos = dataSexos.data;
+                            })
+                            , function error(e) {
+                                vm.mensaje = "Lo siento, algo fue mal cargando variable Sexos en INE";
                             };
 
                         vm.onSubmit = function () {
