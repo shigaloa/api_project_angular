@@ -32,9 +32,9 @@
                             pie: ''
                         };
                         vm.recomendaciones = data.data.recomendaciones;
-                        //vm.url= req.originalUrl;
                         vm.rest_api = data.data._id
-                        vm.formError = "Cargando controles API INE";
+                        //vm.formError = "Cargando controles API INE";
+                        vm.formError = "";
 
                         // Para la lista de navigation
                         vm.listaApis = apiFactory.getLista();
@@ -56,7 +56,7 @@
                                 vm.mensaje = "Lo siento, algo fue mal cargando variable Comunidades en INE";
                             };*/
 
-                        ine.comunidades()
+                        /*ine.comunidades()
                             .then(function (dataComunidades) {
                                 
                                 vm.comunidades = dataComunidades.data;
@@ -73,8 +73,36 @@
                             })
                             , function error(e) {
                                 vm.mensaje = "Lo siento, algo fue mal cargando variable Sexos en INE";
-                            };
+                            };*/
+                        
+                        vm.comunidades = [
+                            { "Id": 8995, "Fk_Variable": 70, "Nombre": "Melilla", "Codigo": "19" },
+                            { "Id": 8997, "Fk_Variable": 70, "Nombre": "Andalucía", "Codigo": "01" },
+                            { "Id": 8998, "Fk_Variable": 70, "Nombre": "Aragón", "Codigo": "02" },
+                            { "Id": 8999, "Fk_Variable": 70, "Nombre": "Asturias, Principado de", "Codigo": "03" },
+                            { "Id": 9000, "Fk_Variable": 70, "Nombre": "Balears, Illes", "Codigo": "04" },
+                            { "Id": 9001, "Fk_Variable": 70, "Nombre": "Canarias", "Codigo": "05" },
+                            { "Id": 9002, "Fk_Variable": 70, "Nombre": "Cantabria", "Codigo": "06" },
+                            { "Id": 9003, "Fk_Variable": 70, "Nombre": "Castilla y León", "Codigo": "07" },
+                            { "Id": 9004, "Fk_Variable": 70, "Nombre": "Castilla - La Mancha", "Codigo": "08" },
+                            { "Id": 9005, "Fk_Variable": 70, "Nombre": "Cataluña", "Codigo": "09" },
+                            { "Id": 9006, "Fk_Variable": 70, "Nombre": "Comunitat Valenciana", "Codigo": "10" },
+                            { "Id": 9007, "Fk_Variable": 70, "Nombre": "Extremadura", "Codigo": "11" },
+                            { "Id": 9008, "Fk_Variable": 70, "Nombre": "Galicia", "Codigo": "12" },
+                            { "Id": 9009, "Fk_Variable": 70, "Nombre": "Madrid, Comunidad de", "Codigo": "13" },
+                            { "Id": 9010, "Fk_Variable": 70, "Nombre": "Murcia, Región de", "Codigo": "14" },
+                            { "Id": 9011, "Fk_Variable": 70, "Nombre": "Navarra, Comunidad Foral de", "Codigo": "15" },
+                            { "Id": 9012, "Fk_Variable": 70, "Nombre": "País Vasco", "Codigo": "16" },
+                            { "Id": 9013, "Fk_Variable": 70, "Nombre": "Rioja, La", "Codigo": "17" },
+                            { "Id": 9015, "Fk_Variable": 70, "Nombre": "Ceuta", "Codigo": "18" }
+                        ];
 
+                        vm.sexos = [
+                            { "Id": 451, "Fk_Variable": 18, "Nombre": "Total", "Codigo": "" },
+                            { "Id": 452, "Fk_Variable": 18, "Nombre": "Hombres", "Codigo": "1" },
+                            { "Id": 453, "Fk_Variable": 18, "Nombre": "Mujeres", "Codigo": "6" }
+                        ];
+                        
                         vm.onSubmit = function () {
                             vm.formError = "";
                             if (!vm.formData.comunidad) {
